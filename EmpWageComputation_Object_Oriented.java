@@ -1,7 +1,32 @@
 // Use Case 9 (Ability to save the Total Wage for each company)
 
 
-class EmpWageComputation
+
+class CompanyEmpWage
+{
+        public final String companyName;
+        public final int empRatePerHr;
+        public final int numberOfWorkingDays;
+        public final int maxWorkingHrs;
+        public int empTotalWage;
+
+        public CompanyEmpWage(String companyName, int empRatePerHr, int numberOfWorkingDays, int maxWorkingHrs)
+        {
+                this.companyName = companyName;
+                this.empRatePerHr = empRatePerHr;
+                this.numberOfWorkingDays = numberOfWorkingDays;
+                this.maxWorkingHrs = maxWorkingHrs;
+        }
+
+        public void setTotalEmpWage(int empTotalWage)
+        {
+                this.empTotalWage = empTotalWage;
+        }
+}
+
+
+
+public class EmpWageComputation_Object_Oriented
 {
         public static final int IS_FULL_TIME = 1;
         public static final int IS_PART_TIME = 2;
