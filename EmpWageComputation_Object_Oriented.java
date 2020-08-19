@@ -7,7 +7,7 @@ class EmpWageComputation
         public static final int IS_PART_TIME = 2;
         
 
-        public static int empComputeWage(String companyName, int empRatePerHr, int numberOfWorkingDays, int maxWorkingHrs)
+        public static void empComputeWage(String companyName, int empRatePerHr, int numberOfWorkingDays, int maxWorkingHrs)
         {
                 int empDailyHrs = 0;
                 int empTotalHrs = 0;
@@ -55,10 +55,6 @@ class EmpWageComputation
 		System.out.println();
                 System.out.println();
 		System.out.println();
-
-
-
-                return 0;
         }
 }
 
