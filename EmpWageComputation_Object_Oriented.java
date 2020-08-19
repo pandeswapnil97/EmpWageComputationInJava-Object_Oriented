@@ -1,7 +1,3 @@
-// Use Case 9 (Ability to save the Total Wage for each company)
-
-
-
 class CompanyEmpWage
 {
         public final String companyName;
@@ -30,19 +26,44 @@ public class EmpWageComputation_Object_Oriented
 {
         public static final int IS_FULL_TIME = 1;
         public static final int IS_PART_TIME = 2;
-        
 
-        public static void empComputeWage(String companyName, int empRatePerHr, int numberOfWorkingDays, int maxWorkingHrs)
+        public CompanyEmpWage[] companyEmpWageArray;
+        public int numberOfCompany;
+
+
+        public EmpWageComputation_Object_Oriented()
+        {
+                companyEmpWageArray = new CompanyEmpWage[4];
+        }
+
+
+        public void addCompany(String companyName, int empRatePerHr, int numberOfWorkingDays, int maxWorkingHrs)
+        {
+                companyEmpWageArray[numberOfCompany]=new CompanyEmpWage(companyName, empRatePerHr, numberOfWorkingDays, maxWorkingHrs);
+                numberOfCompany++;
+        }
+
+
+        public void empComputeWage()
+        {
+                for(int i=0;i<numberOfCompany;i++)
+                {
+                        companyEmpWageArray[i].setTotalEmpWage(this.empComputeWage(companyEmpWageArray[i]));
+                }
+        }
+
+
+        public int empComputeWage(CompanyEmpWage companyEmpWage)
         {
                 int empDailyHrs = 0;
                 int empTotalHrs = 0;
 
-                int EmpDailyWage;
-                int EmpTotalWage = 0;
+                int empDailyWage;
+                int empTotalWage = 0;
 
                 int totalWorkingDays=0;
 
-                while(empTotalHrs < maxWorkingHrs && totalWorkingDays < numberOfWorkingDays)
+                while(empTotalHrs < companyEmpWage.maxWorkingHrs && totalWorkingDays < companyEmpWage.numberOfWorkingDays)
                 {
                         totalWorkingDays = totalWorkingDays + 1;
 
@@ -64,35 +85,35 @@ public class EmpWageComputation_Object_Oriented
 
                         empTotalHrs = empTotalHrs + empDailyHrs;
 
-                        EmpDailyWage = empRatePerHr * empDailyHrs;
-                        EmpTotalWage = EmpTotalWage + EmpDailyWage;
+                        empDailyWage = companyEmpWage.empRatePerHr * empDailyHrs;
+                        empTotalWage = empTotalWage + empDailyWage;
 
-                        System.out.println("Employee's Daily Hours for Day " + totalWorkingDays + " in " + companyName + ": " + empDailyHrs);
-                        System.out.println("Employee's Daily Wage for Day " + totalWorkingDays + " in " + companyName + ": " + EmpDailyWage);
+                        System.out.println("Employee's Daily Hours for Day " + totalWorkingDays + " in " + companyEmpWage.companyName + ": " + empDailyHrs);
+                        System.out.println("Employee's Daily Wage for Day " + totalWorkingDays + " in " + companyEmpWage.companyName + ": " + empDailyWage);
 
                         System.out.println();
                 }
 
                 System.out.println();
                 System.out.println();
-                System.out.println("Employee's Total Hours in " + companyName + ": "  + empTotalHrs);
-                System.out.println("Employee's Total Wage in " + companyName + ": "  + EmpTotalWage);
-		System.out.println();
+                System.out.println("Employee's Total Hours in " + companyEmpWage.companyName + ": "  + empTotalHrs);
+                System.out.println("Employee's Total Wage in " + companyEmpWage.companyName + ": "  + empTotalWage);
                 System.out.println();
-		System.out.println();
+                System.out.println();
+                System.out.println();
+
+                return empTotalWage;
         }
-}
 
 
 
-public class EmpWageComputation_Object_Oriented
-{
-	public static void main(String[] args)
-	{
-		EmpWageComputation dmart = new EmpWageComputation();
-		dmart.empComputeWage("DMart", 20, 24, 100);
+        public static void main(String[] args)
+        {
+                EmpWageComputation_Object_Oriented array = new EmpWageComputation_Object_Oriented();
 
-		EmpWageComputation bigbasket = new EmpWageComputation();
-		bigbasket.empComputeWage("BigBasket", 25, 27, 98);
-	}
+                array.addCompany("DMart", 20, 24, 100);
+                array.addCompany("BigBasket", 25, 27, 98);
+
+                array.empComputeWage();
+        }
 }
