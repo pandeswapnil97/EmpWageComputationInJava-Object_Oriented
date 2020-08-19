@@ -1,6 +1,7 @@
 // Use Case 10 (Ability to manage Employee Wage of multiple companies)
 
 
+
 class CompanyEmpWage
 {
         public final String companyName;
