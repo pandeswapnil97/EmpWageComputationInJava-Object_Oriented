@@ -1,4 +1,4 @@
-// Use Case 9 (Ability to save the Total Wage for each company)
+// Use Case 10 (Ability to manage Employee Wage of multiple companies)
 
 class CompanyEmpWage
 {
@@ -64,8 +64,6 @@ public class EmpWageComputation_Object_Oriented
 	{
 		CompanyEmpWage dmart = new CompanyEmpWage();
 		dmart.empComputeWage("DMart", 20, 24, 100);
-
-		CompanyEmpWage bigbasket = new CompanyEmpWage();
                 bigbasket.empComputeWage("BigBasket", 25, 27, 98);
 	}
 }
