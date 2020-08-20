@@ -1,5 +1,6 @@
 //Use Case 13 (Store the Daily Wage along with the Total Wage)
 
+
 import java.util.*;
 
 
