@@ -43,18 +43,11 @@ public class EmpWageComputation_Object_Oriented implements ComputeEmpWage_Interf
         public LinkedList<CompanyEmpWage> companyEmpWageList = new LinkedList<>();
         public int numberOfCompany=0;
 
-	/*
-        public EmpWageComputation_Object_Oriented()
-        {
-                companyEmpWageList = new LinkedList<>();
-        }
-	*/
 
         public void addCompany(String companyName, int empRatePerHr, int numberOfWorkingDays, int maxWorkingHrs)
         {
                 CompanyEmpWage companyEmpWage = new CompanyEmpWage(companyName, empRatePerHr, numberOfWorkingDays, maxWorkingHrs);
-                //numberOfCompany++;
-		companyEmpWageList.add(companyEmpWage);
+                companyEmpWageList.add(companyEmpWage);
         }
 
 
