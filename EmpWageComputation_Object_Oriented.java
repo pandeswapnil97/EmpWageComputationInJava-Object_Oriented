@@ -1,4 +1,12 @@
-//Use Case 10 (Ability to manage Employee Wage of multiple companies)
+//Use Case 11 (Ability to manage Employee Wage of multiple companies using Interface approach)
+
+
+interface ComputeEmpWage_Interface
+{
+	 public void addCompany(String companyName, int empRatePerHr, int numberOfWorkingDays, int maxWorkingHrs);
+	 public void empComputeWage();
+}
+
 
 
 class CompanyEmpWage
@@ -25,7 +33,7 @@ class CompanyEmpWage
 
 
 
-public class EmpWageComputation_Object_Oriented
+public class EmpWageComputation_Object_Oriented implements ComputeEmpWage_Interface
 {
         public static final int IS_FULL_TIME = 1;
         public static final int IS_PART_TIME = 2;
