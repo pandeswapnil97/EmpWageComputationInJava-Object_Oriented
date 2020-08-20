@@ -1,4 +1,4 @@
-//Use Case 13 (Store Daily Wage along with Total Wage)
+//Use Case 14 (Ability to get the Total Wage when queried by company)
 
 import java.util.*;
 
@@ -7,6 +7,7 @@ interface ComputeEmpWage_Interface
 {
 	 public void addCompany(String companyName, int empRatePerHr, int numberOfWorkingDays, int maxWorkingHrs);
 	 public void empComputeWage();
+	 public int getEmpTotalWage(String companyName);
 }
 
 
@@ -25,7 +26,8 @@ class CompanyEmpWage
                 this.empRatePerHr = empRatePerHr;
                 this.numberOfWorkingDays = numberOfWorkingDays;
                 this.maxWorkingHrs = maxWorkingHrs;
-        }
+        	empTotalWage = 0;
+	}
 
         public void setTotalEmpWage(int empTotalWage)
         {
@@ -40,15 +42,26 @@ public class EmpWageComputation_Object_Oriented implements ComputeEmpWage_Interf
         public static final int IS_FULL_TIME = 1;
         public static final int IS_PART_TIME = 2;
 
-        public LinkedList<CompanyEmpWage> companyEmpWageList = new LinkedList<>();
-        public int numberOfCompany=0;
+        public LinkedList<CompanyEmpWage> companyEmpWageList;
+	public Map<String,CompanyEmpWage> companyToEmpWageMap;
+
+	public int numberOfCompany=0;
+
+
+	public EmpWageComputation_Object_Oriented()
+	{
+		companyEmpWageList= new LinkedList<>();
+		companyToEmpWageMap = new HashMap<>();
+	}
 
 
         public void addCompany(String companyName, int empRatePerHr, int numberOfWorkingDays, int maxWorkingHrs)
         {
                 CompanyEmpWage companyEmpWage = new CompanyEmpWage(companyName, empRatePerHr, numberOfWorkingDays, maxWorkingHrs);
+
                 companyEmpWageList.add(companyEmpWage);
-        }
+        	companyToEmpWageMap.put(companyName,companyEmpWage);
+	}
 
 
         public void empComputeWage()
@@ -59,6 +72,12 @@ public class EmpWageComputation_Object_Oriented implements ComputeEmpWage_Interf
                         companyEmpWage.setTotalEmpWage(this.empComputeWage(companyEmpWage));
                 }
         }
+
+	
+	public int getEmpTotalWage(String companyName)
+	{
+		return companyToEmpWageMap.get(companyName).empTotalWage;
+	}
 
 
         public int empComputeWage(CompanyEmpWage companyEmpWage)
@@ -135,5 +154,9 @@ public class EmpWageComputation_Object_Oriented implements ComputeEmpWage_Interf
                 list.addCompany("BigBasket", 10, 4, 20);
 
                 list.empComputeWage();
+		
+		System.out.println("----------------------------------------------------------------------------------------------------------------------");
+
+		System.out.println("Employee's Total Wage for DMart: " + list.getEmpTotalWage("DMart"));
         }
 }
