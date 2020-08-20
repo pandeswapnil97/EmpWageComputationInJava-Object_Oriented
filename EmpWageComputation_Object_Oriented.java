@@ -1,4 +1,4 @@
-//Use Case 12 (Refactor to have list of multiple companies to manage Employee Wage using ArrayList)
+//Use Case 13 (Store Daily Wage along with Total Wage)
 
 import java.util.*;
 
@@ -71,6 +71,7 @@ public class EmpWageComputation_Object_Oriented implements ComputeEmpWage_Interf
 
                 int totalWorkingDays=0;
 
+
                 while(empTotalHrs < companyEmpWage.maxWorkingHrs && totalWorkingDays < companyEmpWage.numberOfWorkingDays)
                 {
                         totalWorkingDays = totalWorkingDays + 1;
@@ -96,13 +97,24 @@ public class EmpWageComputation_Object_Oriented implements ComputeEmpWage_Interf
                         empDailyWage = companyEmpWage.empRatePerHr * empDailyHrs;
                         empTotalWage = empTotalWage + empDailyWage;
 
-                        System.out.println("Employee's Daily Hours for Day " + totalWorkingDays + " in " + companyEmpWage.companyName + ": " + empDailyHrs);
-                        System.out.println("Employee's Daily Wage for Day " + totalWorkingDays + " in " + companyEmpWage.companyName + ": " + empDailyWage);
+			Dictionary storingEmpDailyWage = new Hashtable();
 
-                        System.out.println();
+			String result = empDailyWage + ":" + empTotalWage;
+
+			storingEmpDailyWage.put(totalWorkingDays, result);
+			
+			for(Enumeration i = storingEmpDailyWage.elements();i.hasMoreElements();)
+			{
+                        	System.out.println("Value in Dictionary for Day" + totalWorkingDays + ": "+ i.nextElement());
+                        	System.out.println();
+			}
+
+			System.out.println("Employee's Daily Wage for Day " + totalWorkingDays + " in " + companyEmpWage.companyName + ": " + empDailyWage);
+			System.out.println("Employee's Total Wage till Day " + totalWorkingDays + " in " + companyEmpWage.companyName + ": " + empTotalWage);			
+			System.out.println();
+
                 }
 
-                System.out.println();
                 System.out.println();
                 System.out.println("Employee's Total Hours in " + companyEmpWage.companyName + ": "  + empTotalHrs);
                 System.out.println("Employee's Total Wage in " + companyEmpWage.companyName + ": "  + empTotalWage);
@@ -119,8 +131,8 @@ public class EmpWageComputation_Object_Oriented implements ComputeEmpWage_Interf
         {
                 ComputeEmpWage_Interface list = new EmpWageComputation_Object_Oriented();
 
-                list.addCompany("DMart", 20, 24, 100);
-                list.addCompany("BigBasket", 25, 27, 98);
+                list.addCompany("DMart", 20, 2, 10);
+                list.addCompany("BigBasket", 10, 4, 20);
 
                 list.empComputeWage();
         }
