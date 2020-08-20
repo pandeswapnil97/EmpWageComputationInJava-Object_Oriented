@@ -1,6 +1,5 @@
 //Use Case 12 (Refactor to have list of multiple companies to manage Employee Wage using ArrayList)
 
-
 import java.util.*;
 
 
