@@ -1,4 +1,4 @@
-//Use Case 12 (Refactor to have list of multiple companies to manage Employee Wage using ArrayList)
+//Use Case 13 (Store the Daily Wage along with the Total Wage)
 
 import java.util.*;
 
