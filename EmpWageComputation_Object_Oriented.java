@@ -117,11 +117,11 @@ public class EmpWageComputation_Object_Oriented implements ComputeEmpWage_Interf
 
         public static void main(String[] args)
         {
-                EmpWageComputation_Object_Oriented array = new EmpWageComputation_Object_Oriented();
+                ComputeEmpWage_Interface list = new EmpWageComputation_Object_Oriented();
 
-                array.addCompany("DMart", 20, 24, 100);
-                array.addCompany("BigBasket", 25, 27, 98);
+                list.addCompany("DMart", 20, 24, 100);
+                list.addCompany("BigBasket", 25, 27, 98);
 
-                array.empComputeWage();
+                list.empComputeWage();
         }
 }
