@@ -1,4 +1,6 @@
-//Use Case 11 (Ability to manage Employee Wage of multiple companies using Interface approach)
+//Use Case 12 (Refactor to have list of multiple companies to manage Employee Wage using ArrayList)
+
+import java.util.*;
 
 
 interface ComputeEmpWage_Interface
@@ -38,28 +40,30 @@ public class EmpWageComputation_Object_Oriented implements ComputeEmpWage_Interf
         public static final int IS_FULL_TIME = 1;
         public static final int IS_PART_TIME = 2;
 
-        public CompanyEmpWage[] companyEmpWageArray;
-        public int numberOfCompany;
+        public LinkedList<CompanyEmpWage> companyEmpWageList = new LinkedList<>();
+        public int numberOfCompany=0;
 
-
+	/*
         public EmpWageComputation_Object_Oriented()
         {
-                companyEmpWageArray = new CompanyEmpWage[4];
+                companyEmpWageList = new LinkedList<>();
         }
-
+	*/
 
         public void addCompany(String companyName, int empRatePerHr, int numberOfWorkingDays, int maxWorkingHrs)
         {
-                companyEmpWageArray[numberOfCompany]=new CompanyEmpWage(companyName, empRatePerHr, numberOfWorkingDays, maxWorkingHrs);
-                numberOfCompany++;
+                CompanyEmpWage companyEmpWage = new CompanyEmpWage(companyName, empRatePerHr, numberOfWorkingDays, maxWorkingHrs);
+                //numberOfCompany++;
+		companyEmpWageList.add(companyEmpWage);
         }
 
 
         public void empComputeWage()
         {
-                for(int i=0;i<numberOfCompany;i++)
+                for(int i=0;i<companyEmpWageList.size();i++)
                 {
-                        companyEmpWageArray[i].setTotalEmpWage(this.empComputeWage(companyEmpWageArray[i]));
+			CompanyEmpWage companyEmpWage = companyEmpWageList.get(i);
+                        companyEmpWage.setTotalEmpWage(this.empComputeWage(companyEmpWage));
                 }
         }
 
